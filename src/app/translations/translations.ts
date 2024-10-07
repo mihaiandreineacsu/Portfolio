@@ -91,7 +91,7 @@ export const translations = {
       },
       PROJECT1: {
         DESCRIPTION:
-          'A dynamic library of thousands of Pokémon with detailed information and a focus on efficient data management and performance optimization.',
+          'As soon as the project is published, the description will also be made public.',
       },
       PROJECT2: {
         DESCRIPTION:
@@ -272,11 +272,11 @@ export const translations = {
       },
       PROJECT1: {
         DESCRIPTION:
-          'Eine dynamische Bibliothek mit Tausenden von Pokémon, die detaillierte Informationen und eine effiziente, durchdachte Implementierung bietet.',
+          'Sobald das Projekt veröffentlicht wird, wird auch die Beschreibung öffentlich gemacht.',
       },
       PROJECT2: {
         DESCRIPTION:
-          'Eine dynamische Bibliothek mit Tausenden von Pokémon, die detaillierte Informationen und eine saubere, funktionale Programmierung bietet.',
+          'Spring-, Lauf- und Wurfspiel mit objektorientiertem Ansatz. Hilf Pepe, Münzen und Tabasco-Salsa zu finden, um gegen die verrückte Henne zu kämpfen.',
       },
       
     },
