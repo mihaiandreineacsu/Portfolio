@@ -19,7 +19,7 @@
                 <div class="contact-field" (click)="focusInput(nameInput)">
                     <label for="name">{{ getTranslation('CONTACTS.FIELD1') }}</label>
                     <input #nameInput [(ngModel)]="contactData.name" type="text" id="name" name="name" 
-                    [ngClass]="{'invalid-placeholder': contactForm.controls['name'] && contactForm.submitted}"
+                    [ngClass]="{'invalid-placeholder': contactForm.controls['name']?.invalid && contactForm.submitted}"
                     placeholder="{{ placeholders.name }}" required>
                 </div>
 
@@ -28,7 +28,7 @@
                 <div class="contact-field" (click)="focusInput(mailInput)">
                     <label for="email">{{ getTranslation('CONTACTS.FIELD2') }}</label>
                     <input #mailInput [(ngModel)]="contactData.email" type="text" id="mail" name="email" 
-                    [ngClass]="{'invalid-placeholder': contactForm.controls['email'] && contactForm.submitted}" 
+                    [ngClass]="{'invalid-placeholder': contactForm.controls['email']?.invalid && contactForm.submitted}" 
                     placeholder="{{ placeholders.email}}" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
                 </div>
 
@@ -37,7 +37,7 @@
                 <div class="contact-field" (click)="focusTextArea(messageInput)">
                     <label for="message">{{ getTranslation('CONTACTS.FIELD3') }}</label>
                     <textarea #messageInput #message="ngModel" [(ngModel)]="contactData.message" type="text" id="message" name="message" 
-                    [ngClass]="{'invalid-placeholder': contactForm.controls['message'] && contactForm.submitted}"
+                    [ngClass]="{'invalid-placeholder': contactForm.controls['message']?.invalid && contactForm.submitted}"
                     placeholder="{{ placeholders.message }}" required=""></textarea>
                 
                 </div>
@@ -54,8 +54,8 @@
                     <p>Please accept the privacy policy.</p>
                 }
                 @if (successMail) {
-                    <p class="success">Thanks for your message! I will respond asap!</p>
-                }
+                    <p class="success">Thanks for your message! I will respond as soon as possible!</p>
+                }   
                 @if (isChecked && ngForm.form.valid) {
                     <div class="submit-area">
                         <button type="submit" value="Submit">{{ getTranslation('CONTACTS.BUTTON') }}</button>
