@@ -6,9 +6,11 @@ import { TranslationsService } from '../../services/translations.service';
   standalone: true,
   imports: [],
   templateUrl: './impressum.component.html',
-  styleUrl: './impressum.component.scss',
+  styleUrl: './impressum.component.scss'
 })
+
 export class ImpressumComponent {
+
   translationData = inject(TranslationsService);
   activeLang: 'en' | 'de' = 'en';
 
