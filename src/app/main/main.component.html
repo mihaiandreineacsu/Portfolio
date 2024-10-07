@@ -1,0 +1,140 @@
+<app-start id="start"></app-start>
+<app-aboutme id="aboutme"></app-aboutme>
+<app-skills id="skills"></app-skills>
+<app-projects id="projects" (projectClicked)="showLayer($event)"></app-projects>
+<app-quotes id="quotes"></app-quotes>
+<app-contact id="contact"></app-contact>
+
+@if (isProjectLayerVisible) {
+<div class="layer-container">
+  <div class="inner-layer">
+    <div class="layer-left">
+      <p class="number">{{ currentProject.number }}</p>
+      <p class="project-name">{{ currentProject.name }}</p>
+      <h2>{{ getTranslation("PROJECTS.HEADLINE") }}</h2>
+      <p>
+        {{
+          getTranslation(
+            "PROJECTS.PROJECT" + currentProjectIndex + ".DESCRIPTION"
+          )
+        }}
+      </p>
+      <div class="skills">
+        @for (skill of currentProject.skills; track skill) {
+        <div class="skill">
+          <img
+            [src]="'../../assets/img/' + skill.toLowerCase() + '_green.svg'"
+            alt="{{ skill }}"
+          />
+          <p>{{ skill }}</p>
+        </div>
+        }
+      </div>
+      <div class="buttons-left">
+        <a href="{{ currentProject.githubLink }}" target="_blank">
+          <button>
+            <p>Github</p>
+            <img src="../../assets/img/arrow_outward_green.svg" alt="" />
+          </button>
+        </a>
+        <a href="{{ currentProject.liveLink }}" target="_blank">
+          <button>
+            <p>Live Test</p>
+            <img src="../../assets/img/arrow_outward_green.svg" alt="" />
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="layer-right">
+      <div class="close" (click)="hideLayer()">
+        <img src="../../assets/img/close_white.svg" alt="" />
+      </div>
+      <img [src]="currentProject.imageUrl" alt="" />
+      <div class="buttons-right">
+        <div
+          class="button-right"
+          (click)="previousProject()"
+          [class.disabled]="currentProjectIndex === 0"
+        >
+          <img src="../../assets/img/arrow_back_green.svg" alt="" />
+          <p>{{ getTranslation("PROJECTS.PREVIOUS") }}</p>
+        </div>
+
+        <div
+          class="button-right"
+          (click)="nextProject()"
+          [class.disabled]="currentProjectIndex === projects.length - 1"
+        >
+          <p>{{ getTranslation("PROJECTS.NEXT") }}</p>
+          <img src="../../assets/img/arrow_forward_green.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner-layer-mobile">
+    <div class="close" (click)="hideLayer()">
+      <img src="../../assets/img/close_white.svg" alt="" />
+    </div>
+    <img [src]="currentProject.imageUrl" alt="" />
+    <div class="layer-left">
+      <p class="number">{{ currentProject.number }}</p>
+      <p class="project-name">{{ currentProject.name }}</p>
+      <h2>{{ getTranslation("PROJECTS.HEADLINE") }}</h2>
+      <p>
+        {{
+          getTranslation(
+            "PROJECTS.PROJECT" + currentProjectIndex + ".DESCRIPTION"
+          )
+        }}
+      </p>
+      <div class="skills">
+        @for (skill of currentProject.skills; track skill) {
+        <div class="skill">
+          <img
+            [src]="'../../assets/img/' + skill.toLowerCase() + '_green.svg'"
+            alt="{{ skill }}"
+          />
+          <p>{{ skill }}</p>
+        </div>
+        }
+      </div>
+      <div class="buttons-left">
+        <a href="{{ currentProject.githubLink }}" target="_blank">
+          <button>
+            <p>Github</p>
+            <img src="../../assets/img/arrow_outward_green.svg" alt="" />
+          </button>
+        </a>
+        <a href="{{ currentProject.liveLink }}" target="_blank">
+          <button>
+            <p>Live Test</p>
+            <img src="../../assets/img/arrow_outward_green.svg" alt="" />
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="layer-right">
+      <div class="buttons-right">
+        <div
+          class="button-right"
+          (click)="previousProject()"
+          [class.disabled]="currentProjectIndex === 0"
+        >
+          <img src="../../assets/img/arrow_back_green.svg" alt="" />
+          <p>{{ getTranslation("PROJECTS.PREVIOUS") }}</p>
+        </div>
+
+        <div
+          class="button-right"
+          (click)="nextProject()"
+          [class.disabled]="currentProjectIndex === projects.length - 1"
+        >
+          <p>{{ getTranslation("PROJECTS.NEXT") }}</p>
+          <img src="../../assets/img/arrow_forward_green.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+}

@@ -1,0 +1,132 @@
+@import '../../../mixins.scss';
+
+#projects-container {
+    width: 100%;
+    position: relative;
+    background-color: $standard-background;
+    padding-bottom: 150px;
+    gap: 50px;
+    @include dFlex($fd: row, $jc: center, $ai: center);
+}
+
+.projects-content {
+    @include dFlex($fd: column, $jc:flex-start, $ai: flex-start);
+    gap: 20px;
+    width: 1350px;
+    position: relative;
+    @include margin-sides($le: 96px, $ri: 96px);
+    > p {
+        font-family: 'Karla';
+        font-weight: 400;
+        font-size: 18px;
+        color: white;
+        padding-bottom: 32px;
+        line-height: 1.4;
+    }
+}
+
+.project-line {
+    background-color: $standard-green;
+    width: 880px;
+    height: 1px;
+}
+
+.project-details {
+    @include dFlex($fd: row, $jc: space-between, $ai: center);
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    width: 816px;
+    &:hover {
+        > div {
+            > img {
+                opacity: 1;
+            }
+        }
+    }
+    > div {
+        @include dFlex($fd: row, $jc: flex-start, $ai: center);
+        gap: 7px;
+        > h3 {
+            font-family: 'Fira Code';
+            font-weight: 700;
+            color: white;
+            font-size: 24px;
+        };
+        > img {
+            opacity: 0;        
+        }
+    } 
+    > P {
+        font-family: 'Karla';
+        font-weight: 400;
+        color: white;
+        font-size: 18px;
+    }
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(61,207,182,0.3)
+    }
+}
+
+.project-screenshot {
+    position: absolute;
+    bottom: 130px;
+    right: 0;
+    display: none;
+    > img {
+        width: 330px;
+        border-radius: 16px;
+        position: absolute; 
+        top: -15px; 
+        right: 22px; 
+        z-index: 2;
+    }
+    > .square {
+        width: 330px; 
+        height: 225px; 
+        background-color: #1c1c1c; 
+        background-image: url("../../../assets/img/diagonal-lines.svg");
+        background-size: 25px 25px; 
+        border-radius: 16px;
+        z-index: 1;   
+    }
+}
+
+@media (max-width: 1440px) {
+    .project-previews {
+        display: none;
+    }
+}
+
+@media (max-width: 1070px) {
+    .projects-content {
+        width: 90%;
+        @include margin-sides($le: 0px, $ri: 0px);
+    }
+    .projects-list {
+        width: 100%
+    }
+    .project-line {
+        width: 100%
+    }
+    .project-details {
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    h1 {
+        font-size: 40px;
+    };
+    h3 {
+        font-size: 20px;
+    }
+    .projects-content p {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,26 @@
+@import "../impressum/impressum.component.scss";
+
+.legal-container {
+  height: fit-content;
+}
+
+h2 {
+  padding-top: 30px;
+}
+
+h3 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 550px) {
+  h1 {
+    font-size: 23px;
+  }
+}

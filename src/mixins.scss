@@ -1,0 +1,29 @@
+@mixin padding($val) {
+    padding-top: $val;
+    padding-bottom: $val;
+}
+
+@mixin padding-sides($le, $ri) {
+    padding-left: $le;
+    padding-right: $ri;
+}
+
+@mixin margin-sides($le, $ri) {
+    margin-left: $le;
+    margin-right: $ri;
+}
+
+@mixin margin-vertical($top, $bot) {
+    margin-top: $top;
+    margin-bottom: $bot;
+}
+
+@mixin dFlex($fd: column, $jc: flex-start, $ai: center) { //Default parameter
+    display: flex;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+$standard-green: rgba(61,207,182,1);
+$standard-background: #1c1c1c;

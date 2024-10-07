@@ -1,0 +1,27 @@
+<div id="quotes-container">
+  <div class="quotes-content">
+      <h2>{{ getGeneralTranslation('QUOTES.HEADLINE') }}</h2>
+      <div class="carousel">            
+          <div class="carousel-wrapper">          
+          @for (quote of visibleQuotes; track quote.name; let index = $index) {
+              <div class="quote" [ngClass]="{ 'small-quote': index !== 1, 'transform-right': isTransformed }">
+                  <p>{{ quote.text }}</p>
+                  <div class="quote-bottom">
+                      <div class="quote-line"></div>
+                      <div class="person">
+                          <p>{{ quote.name }}</p>
+                      </div>
+                  </div>
+              </div>
+          }        
+          </div>
+      </div>
+      <div class="quotes-navigation">
+          <img src="../../../assets/img/arrow_back.svg" (click)="prevQuote()" alt="Previous">
+          @for (quote of quotesEN; track quote.name; let index = $index) {
+              <div class="dot" [ngClass]="{ 'active': index === currentIndex }"></div>
+          }
+          <img src="../../../assets/img/arrow_forward.svg" (click)="nextQuote()" alt="Next">
+      </div>
+  </div>
+</div>

@@ -1,0 +1,249 @@
+@import "../../../mixins.scss";
+
+#start-container {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, #1c1c1c 40%, #08463b 100%);
+  @include dFlex($fd: column, $jc: center);
+}
+
+.title-box {
+  @include dFlex($fd: column, $jc: center, $ai: center);
+  color: white;
+  > .jobtitle {
+    font-size: 40px;
+    text-align: center;
+  }
+  > .main-name {
+    color: white;
+    font-size: 128px;
+    font-family: "Karla";
+    font-weight: 700;
+  }
+  > .main-name-split {
+    color: white;
+    font-size: 128px;
+    font-family: "Karla";
+    font-weight: 700;
+    text-align: center;
+    display: none;
+  }
+}
+
+.start-buttons {
+  width: 363px;
+  @include dFlex($fd: row, $jc: space-between, $ai: flex-start);
+  margin-top: 20px;
+}
+
+.banderole {
+  width: calc(100vw + 10px);
+  height: 62px;
+  position: absolute;
+  right: 0;
+  bottom: 100px;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transform: rotate(-3deg) translateX(-10px);
+  z-index: 2;
+  backdrop-filter: blur(2.5px);
+}
+
+.scrolling-wrapper {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollText 400s linear infinite;
+}
+
+.scrolling-text {
+  display: inline-block;
+  color: $standard-green;
+  font-family: "Karla";
+  font-size: 32px;
+  padding-right: 50px;
+  white-space: nowrap;
+  > span {
+    margin-right: 50px;
+  }
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.lines-container {
+  position: absolute;
+  width: 100%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @include dFlex($fd: row, $jc: center, $ai: flex-end);
+}
+
+.lines-content {
+  width: 1920px;
+  @include margin-sides($le: 96px, $ri: 96px);
+  @include dFlex($fd: row, $jc: space-between, $ai: flex-end);
+}
+
+.line-element-left {
+  height: 312px;
+  z-index: 1;
+  @include dFlex($fd: column, $jc: space-between, $ai: center);
+}
+
+.arrow-down {
+  width: 30px;
+  height: 48px;
+  border: 1px solid $standard-green;
+  border-radius: 15px;
+  @include dFlex($jc: center, $ai: center);
+  > img {
+    width: 17px;
+    position: relative;
+    animation: bounce 1s ease-in-out infinite;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.line-left {
+  background-color: $standard-green;
+  width: 1px;
+  height: 240px;
+}
+
+.line-element-right {
+  width: 20px;
+  z-index: 1;
+  @include dFlex($fd: column, $jc: flex-end, $ai: center);
+  > a {
+    font-family: "Karla";
+    font-weight: 400;
+    font-size: 18px;
+    white-space: nowrap;
+    transform: translateY(-50%) rotate(-90deg);
+    margin-bottom: 110px;
+    padding-bottom: 2px;
+    &:hover {
+      color: $standard-green;
+    }
+  }
+}
+
+.line-right {
+  background-color: white;
+  width: 1px;
+  height: 236px;
+  margin-top: 24px;
+}
+
+.start-some {
+  @include dFlex($fd: row, $jc: flex-start, $ai: center);
+  gap: 4px;
+  padding-left: 12px;
+  margin-top: 12px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover .link-dot {
+    opacity: 1;
+  }
+  &:hover img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.1s ease;
+  }
+}
+
+@media (max-width: 1500px) {
+  .main-name {
+    display: none;
+  }
+  .main-name-split {
+    display: block !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .lines-content {
+    width: 90%;
+    @include margin-sides($le: 0px, $ri: 0px);
+    @include dFlex($fd: row, $jc: space-between, $ai: flex-end);
+  }
+  .line-element-right a {
+    display: none;
+  }
+  .banderole {
+    bottom: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .title-box {
+    > .jobtitle {
+      font-size: 24px;
+    }
+    > .main-name-split {
+      font-size: 62px;
+    }
+  }
+  .line-element-left {
+    height: 235px;
+  }
+  .line-left {
+    height: 170px;
+  }
+  .line-right {
+    height: 180px;
+  }
+}
+
+@media (max-height: 780px) {
+  .line-element-left {
+    height: 190px;
+  }
+  .line-left {
+    height: 120px;
+  }
+  .line-right {
+    height: 130px;
+  }
+}
+
+@media (max-width: 450px) {
+  .title-box {
+    > .jobtitle {
+      font-size: 20px;
+    }
+    > .main-name-split {
+      font-size: 46px;
+    }
+  }
+  .start-buttons {
+    width: 300px;
+    @include dFlex($fd: row, $jc: space-between, $ai: flex-start);
+    margin-top: 20px;
+    > a {
+      button {
+        width: 130px;
+        font-size: 16px;
+      }
+    }
+  }
+}

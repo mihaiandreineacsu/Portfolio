@@ -1,0 +1,199 @@
+@import '../../../mixins.scss';
+
+#contacts-container {
+    width: 100%;
+    position: relative;
+    background: $standard-background;
+    padding-bottom: 150px;
+    gap: 50px;
+
+    @include dFlex($fd: row, $jc: center, $ai: flex-start);
+}
+
+.contacts-content {
+    @include dFlex($fd: row, $jc:space-between, $ai: flex-start);
+    gap: 20px;
+    width: 1350px;
+    @include margin-sides($le: 96px, $ri: 96px);
+}
+
+.contacts-left {
+    @include dFlex($fd: column, $jc: flex-start, $ai: flex-start);
+    width: 568px;
+    gap: 10px;
+    > p {
+        font-size: 16px;
+        font-family: 'Karla';
+        font-weight: 400;
+        line-height: 1.3;
+        > span {
+            font-weight: 700;
+            color: $standard-green;
+        }
+    }
+}
+
+form {
+    @include dFlex($fd: column, $jc: flex-start, $ai: flex-start);
+    > .line {
+        height: 1px;
+        width: 616px;
+        background-color: $standard-green;
+    }
+    > p {
+        font-family: 'Karla';
+        font-weight: 400;
+        font-size: 14px;
+        color: rgba(236,123,123,0.8);
+        padding-top: 10px;
+    }
+}
+
+.contact-field {
+    padding: 32px;
+    width: 552px;
+    @include dFlex($fd: column, $jc: flex-start, $ai: flex-start);
+    gap: 16px;
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(61,207,182,0.15);
+    }
+}
+
+label {
+    font-family: 'Fira Code';
+    font-weight: 500;
+    font-size: 24px;
+    color: $standard-green
+}
+
+input, textarea {
+    background-color: transparent;
+    border-style: none;
+    resize: none;
+    width: 100%;
+    height: 20px;
+    &:focus {
+        outline: none; 
+        border: none;
+    }
+    font-family: 'Karla';
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(255,255,255,1);
+}
+
+::placeholder {
+    font-family: 'Karla';
+    font-weight: 400;
+    font-size: 18px;
+    color: rgba(255,255,255,0.8);
+}
+
+.invalid-placeholder::placeholder {
+    color: rgba(236,123,123,0.8);
+}
+
+.check-area {
+    @include dFlex($fd: row, $jc: flex-start, $ai: center);
+    gap: 10px;
+    padding-top: 32px;
+    > p {
+        font-family: 'Karla';
+        font-weight: 400;
+        font-size: 15px;
+        > a  {
+            font-family: 'Fira Code';
+            font-weight: 400;
+            font-size: 15px;
+            color: $standard-green;
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+
+.checkbox {
+    @include dFlex($fd: row, $jc: center, $ai: center);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    &:hover {
+        background-color: rgba(61,207,182,0.15);
+        cursor: pointer;
+    }
+}
+
+.submit-area {
+    @include dFlex($fd: row, $jc: center, $ai: flex-start);
+    width: 100%;
+    padding-top: 30px;
+    > button {
+        color: rgba(255,255,255,0.8);
+        border-color: rgba(255,255,255,0.8);
+        &:hover {
+            color: rgba(255,255,255,0.8);
+            border-color: rgba(255,255,255,0.8);
+            background-color: rgba(61,207,182,0.15);
+            cursor: pointer;
+        }
+    }
+}
+
+.success {
+    color: $standard-green !important;
+}
+
+@media (max-width: 1450px) {
+    #contacts-container {
+        padding-bottom: 40px;
+    }
+    .contacts-content {
+        @include dFlex($fd: column, $jc:flex-start, $ai: center);
+        gap: 64px;
+        width: 90%;
+        @include margin-sides($le: 0px, $ri: 0px);
+    }
+    .contacts-left {
+        max-width: 616px;
+        width: 100%;
+    }
+    .contacts-right {
+        max-width: 616px;
+        width: 100%;
+    }
+    form {
+        > .line {
+            width: 100%;
+        }
+        .contact-field {
+            width: 100%;
+            box-sizing: border-box;  
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 40px;
+    }
+    h3, h2 {
+        font-size: 20px;
+    }
+    .contact-field {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
+        gap: 10px;
+    }
+    label {
+        font-size: 18px;
+    }
+    .check-area {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+}
