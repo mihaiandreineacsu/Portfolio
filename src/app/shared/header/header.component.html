@@ -6,20 +6,21 @@
             <div class="translate-en" [ngClass]="{'translate-active': activeLang === 'en'}" (click)="setActiveLang('en')">EN</div>
             <div class="translate-de" [ngClass]="{'translate-active': activeLang === 'de'}" (click)="setActiveLang('de')">DE</div>
         </div>
-        <div class="header-links">
-            <div class="header-single-link">
+
+        <div class="header-links" >
+            <div class="header-single-link" id="aboutme">
                 <a href="#aboutme">{{ getTranslation('HEADER.ABOUT') }}</a>
                 <div class="link-dot"></div>
             </div>
-            <div class="header-single-link">
+            <div class="header-single-link" id="skills">
                 <a href="#skills">{{ getTranslation('HEADER.SKILLS') }}</a>
                 <div class="link-dot"></div>
             </div>
-            <div class="header-single-link">
+            <div class="header-single-link" id="projects">
                 <a href="#projects">{{ getTranslation('HEADER.PROJECTS') }}</a>
                 <div class="link-dot"></div>
             </div>
-        </div>
+        </div> 
         
     </div>
 
@@ -30,15 +31,15 @@
     <div (click)="$event.stopPropagation()" [ngStyle]="{'display': isMobileMenu ? 'block' : 'none'}" class="mobile-menu">
         
         <div class="header-links">
-            <div class="header-single-link">
+            <div class="header-single-link" id="aboutme">
                 <a href="#aboutme">{{ getTranslation('HEADER.ABOUT') }}</a>
                 <div class="link-dot"></div>
             </div>
-            <div class="header-single-link">
+            <div class="header-single-link" id="skills">
                 <a href="#skills">{{ getTranslation('HEADER.SKILLS') }}</a>
                 <div class="link-dot"></div>
             </div>
-            <div class="header-single-link">
+            <div class="header-single-link" id="projects">
                 <a href="#projects">{{ getTranslation('HEADER.PROJECTS') }}</a>
                 <div class="link-dot"></div>
             </div>

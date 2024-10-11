@@ -16,7 +16,7 @@ export class ProjectsComponent {
 
   projects = [
     { id: 0, name: 'Join' },
-    { id: 1, name: 'DaBubble' },
+    { id: 1, name: 'DABubble' },
     { id: 1, name: 'El Pollo Loco' }
   ];
 

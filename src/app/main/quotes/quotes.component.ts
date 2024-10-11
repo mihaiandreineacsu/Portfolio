@@ -7,9 +7,11 @@ import { TranslationsService } from '../../services/translations.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './quotes.component.html',
-  styleUrl: './quotes.component.scss',
+  styleUrl: './quotes.component.scss'
 })
+
 export class QuotesComponent {
+
   quotesDE: Array<{ text: string; name: string }> = [
     {
       text: 'Ogi hat ein unglaubliches Gespür für sauberes, effizientes Frontend-Design und setzt Projekte immer mit einem hohen Anspruch an Usability um.',
@@ -56,12 +58,12 @@ export class QuotesComponent {
     },
   ];
 
-  currentIndex: number = 0;
+  currentIndex: number = 0; 
   isTransformed = false;
 
-  get visibleQuotes(): Array<{ text: string; name: string }> {
-    const total = 5;
-
+  get visibleQuotes(): Array<{ text: string, name: string }> {
+    const total = 5; 
+  
     return [
       this.getTranslation((this.currentIndex - 1 + total) % total),
       this.getTranslation(this.currentIndex),
@@ -78,8 +80,7 @@ export class QuotesComponent {
   }
 
   prevQuote(): void {
-    this.currentIndex =
-      (this.currentIndex - 1 + this.quotesEN.length) % this.quotesEN.length;
+    this.currentIndex = (this.currentIndex - 1 + this.quotesEN.length) % this.quotesEN.length;
     this.transformQuotes();
   }
 
@@ -92,16 +93,16 @@ export class QuotesComponent {
 
   setActiveLang(lang: 'en' | 'de') {
     this.activeLang = lang;
-    this.translationData.setLanguage(lang);
+    this.translationData.setLanguage(lang); 
   }
 
-  getTranslation(index: number): { text: string; name: string } {
-    const quoteKey = `QUOTES.QUOTE${index + 1}`;
-    const personKey = `QUOTES.PERSON${index + 1}`;
-
+  getTranslation(index: number): { text: string, name: string } {
+    const quoteKey = `QUOTES.QUOTE${index + 1}`; 
+    const personKey = `QUOTES.PERSON${index + 1}`; 
+  
     const text = this.translationData.getTranslation(quoteKey);
     const name = this.translationData.getTranslation(personKey);
-
+  
     return { text, name };
   }
 }

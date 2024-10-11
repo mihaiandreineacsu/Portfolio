@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Renderer2 } from '@angular/core';
 import { StartComponent } from './start/start.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { SkillsComponent } from "./skills/skills.component";
@@ -7,6 +7,8 @@ import { ContactComponent } from './contact/contact.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { CommonModule } from '@angular/common';
 import { TranslationsService } from '../services/translations.service';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Component({
   selector: 'app-main',
@@ -18,8 +20,7 @@ import { TranslationsService } from '../services/translations.service';
 
 export class MainComponent {
 
-  currentProjectIndex = 0;
-  isProjectLayerVisible = false;
+  constructor(private renderer: Renderer2) {}
 
   projects = [
     {
@@ -51,11 +52,13 @@ export class MainComponent {
     }
   ];
 
-  
+  currentProjectIndex = 0;
+  isProjectLayerVisible = false;
 
   showLayer(projectIndex: number) {
     this.currentProjectIndex = projectIndex;
     this.isProjectLayerVisible = true;
+    this.renderer.addClass(document.body, 'no-scroll');
   }
 
   hideLayer() {

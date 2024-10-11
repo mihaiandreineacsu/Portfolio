@@ -1,43 +1,51 @@
-<div id="projects-container">
-  <div class="projects-content">
+<section id="projects-container">
+    <div class="projects-content">
       <h3>Portfolio</h3>
       <h1>{{ getTranslation('PORTFOLIO.HEADLINE') }}</h1>
       <p>{{ getTranslation('PORTFOLIO.TEXT1') }} <br>{{ getTranslation('PORTFOLIO.TEXT2') }}</p>
+      
       <div class="projects-list">
-          <div class="project-line"></div>
-          <div class="project-details" (click)="onProjectClick(0)" (mouseenter)="setHoveredIndex(0)" (mouseleave)="setHoveredIndex(null)">
-              <div>
-                  <h3>Join</h3>
-                  <img src="../../../assets/img/arrow_outward.svg" alt="">
-              </div>
-              <p>JavaScript | HTML | CSS | Firebase</p>
+        <div class="project-line"></div>
+        
+        <div class="project-details" (click)="onProjectClick(0)" (mouseenter)="setHoveredIndex(0)" (mouseleave)="setHoveredIndex(null)">
+          <div>
+            <h3>Join</h3>
+            <img src="../../../assets/img/arrow_outward.svg" alt="">
           </div>
-          <div class="project-line"></div>
-          <div class="project-details" (click)="onProjectClick(1)" (mouseenter)="setHoveredIndex(1)" (mouseleave)="setHoveredIndex(null)">
-              <div>
-                  <h3>DABubble</h3>
-                  <img src="../../../assets/img/arrow_outward.svg" alt="">
-              </div>
-              <p>TypeScript | Angular | Firebase | HTML | CSS </p>
+          <p>JavaScript | HTML | CSS | Firebase</p>
+        </div>
+        
+        <div class="project-line"></div>
+        
+        <div class="project-details" (click)="onProjectClick(1)" (mouseenter)="setHoveredIndex(1)" (mouseleave)="setHoveredIndex(null)">
+          <div>
+            <h3>DABubble</h3>
+            <img src="../../../assets/img/arrow_outward.svg" alt="">
           </div>
-          <div class="project-line"></div>
-          <div class="project-details" (click)="onProjectClick(2)" (mouseenter)="setHoveredIndex(2)" (mouseleave)="setHoveredIndex(null)">
-              <div>
-                  <h3>El Pollo Loco</h3>
-                  <img src="../../../assets/img/arrow_outward.svg" alt="">
-              </div>
-              <p>JavaScript | HTML | CSS</p>
+          <p>TypeScript | Angular | Firebase | HTML | CSS </p>
+        </div>
+        
+        <div class="project-line"></div>
+        
+        <div class="project-details" (click)="onProjectClick(2)" (mouseenter)="setHoveredIndex(2)" (mouseleave)="setHoveredIndex(null)">
+          <div>
+            <h3>El Pollo Loco</h3>
+            <img src="../../../assets/img/arrow_outward.svg" alt="">
           </div>
-          <div class="project-line"></div>
+          <p>JavaScript | HTML | CSS</p>
+        </div>
+        
+        <div class="project-line"></div>
       </div>
+      
       <div class="project-previews">
-          @for (preview of previews; track preview; let i = $index) {  
-              <div class="project-screenshot" [ngStyle]="{'display': hoveredIndex === i ? 'block' : 'none', 'bottom': (130 - i * 95) + 'px'}">
-                  <img src={{preview}} alt="">
-                  <div class="square"></div>
-              </div>
-          } 
+        @for (preview of previews; track preview; let i = $index) {
+          <div class="project-screenshot" [ngStyle]="{'display': hoveredIndex === i ? 'block' : 'none', 'bottom': (130 - i * 95) + 'px'}">
+            <img src={{preview}} alt="">
+            <div class="square"></div>
+          </div>
+        }
       </div>
-  </div>
+    </div>
+  </section>
   
-</div>

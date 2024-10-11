@@ -14,6 +14,7 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent {
 
   isMobileMenu = false;
+location: any;
 
   toggleMobileMenu(event: Event) {
     event.stopPropagation(); // Verhindert, dass das globale Klick-Event sofort ausgelöst wird

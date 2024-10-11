@@ -1,35 +1,42 @@
 <div id="contacts-container">
     <div class="contacts-content">
-
         <div class="contacts-left">
             <h3>{{ getTranslation('CONTACTS.HEADLINE1') }}</h3>
             <h1>{{ getTranslation('CONTACTS.HEADLINE2') }} <br>{{ getTranslation('CONTACTS.H2BR') }}</h1>
             <h2 [ngStyle]="{ 'color': 'rgba(61,207,182,1)'}">{{ getTranslation('CONTACTS.HEADLINE3') }}</h2>
             <p>{{ getTranslation('CONTACTS.TEXT1') }}</p>
             <p>{{ getTranslation('CONTACTS.TEXT2') }} <span>{{ getTranslation('CONTACTS.SPAN1') }}</span></p>
-
         </div>
 
         <div class="contacts-right">
-        
             <form #ngForm="ngForm" (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
-
                 <div class="line"></div>
 
                 <div class="contact-field" (click)="focusInput(nameInput)">
                     <label for="name">{{ getTranslation('CONTACTS.FIELD1') }}</label>
                     <input #nameInput [(ngModel)]="contactData.name" type="text" id="name" name="name" 
-                    [ngClass]="{'invalid-placeholder': contactForm.controls['name']?.invalid && contactForm.submitted}"
-                    placeholder="{{ placeholders.name }}" required>
+                        [ngClass]="{'invalid-placeholder': contactForm.controls['name']?.invalid && contactForm.submitted}"
+                        placeholder="{{ placeholders.name }}" required>
                 </div>
 
                 <div class="line"></div>
 
-                <div class="contact-field" (click)="focusInput(mailInput)">
+                <div class="contact-field">
                     <label for="email">{{ getTranslation('CONTACTS.FIELD2') }}</label>
-                    <input #mailInput [(ngModel)]="contactData.email" type="text" id="mail" name="email" 
-                    [ngClass]="{'invalid-placeholder': contactForm.controls['email']?.invalid && contactForm.submitted}" 
-                    placeholder="{{ placeholders.email}}" required pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}">
+                    <input #mailInput [(ngModel)]="contactData.email" type="email" id="mail" name="email" 
+                        required
+                        [ngClass]="{
+                            'invalid-placeholder': contactForm.controls['email']?.invalid && (contactForm.controls['email']?.touched || contactForm.submitted),
+                            'error-border': contactForm.controls['email']?.invalid && (contactForm.controls['email']?.touched || contactForm.submitted)
+                        }"
+                        placeholder="{{ placeholders.email }}" 
+                        (input)="clearEmailError()"
+                        (blur)="checkEmailValidity()"
+                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                    <div *ngIf="contactForm.controls['email']?.invalid && (contactForm.controls['email']?.touched || contactForm.submitted)" class="error-message">
+                        <p *ngIf="contactForm.controls['email']?.errors?.['required']" style="color: red;">{{ getTranslation('CONTACTS.ERROR_EMAIL_REQUIRED') }}</p>
+                        <p *ngIf="contactForm.controls['email']?.errors?.['pattern']" style="color: red;">{{ getTranslation('CONTACTS.ERROR_INVALID_EMAIL') }}</p>
+                    </div>
                 </div>
 
                 <div class="line"></div>
@@ -37,31 +44,24 @@
                 <div class="contact-field" (click)="focusTextArea(messageInput)">
                     <label for="message">{{ getTranslation('CONTACTS.FIELD3') }}</label>
                     <textarea #messageInput #message="ngModel" [(ngModel)]="contactData.message" type="text" id="message" name="message" 
-                    [ngClass]="{'invalid-placeholder': contactForm.controls['message']?.invalid && contactForm.submitted}"
-                    placeholder="{{ placeholders.message }}" required=""></textarea>
-                
+                        [ngClass]="{'invalid-placeholder': contactForm.controls['message']?.invalid && contactForm.submitted}"
+                        placeholder="{{ placeholders.message }}" required></textarea>
                 </div>
 
                 <div class="line"></div>
 
                 <div class="check-area">
                     <div class="checkbox" (click)="toggleCheckbox()">
-                        <img [src]="isChecked ? '../../../assets/img/check_checked.svg' : '../../../assets/img/check_empty.svg'" alt="" alt="">
+                        <img [src]="isChecked ? '../../../assets/img/check_checked.svg' : '../../../assets/img/check_empty.svg'" alt="">
                     </div>
                     <p>{{ getTranslation('CONTACTS.TEXT3') }} <a [routerLink]="['/privacy']" target="_blank">{{ getTranslation('CONTACTS.SPAN2') }}</a> {{ getTranslation('CONTACTS.TEXT4') }}</p>
                 </div>
-                @if (showCheckboxError) {
-                    <p>Please accept the privacy policy.</p>
-                }
-                @if (successMail) {
-                    <p class="success">Thanks for your message! I will respond as soon as possible!</p>
-                }   
-                @if (isChecked && ngForm.form.valid) {
-                    <div class="submit-area">
-                        <button type="submit" value="Submit">{{ getTranslation('CONTACTS.BUTTON') }}</button>
-                    </div>
-                }
+                <p *ngIf="showCheckboxError" style="color: red;">{{ getTranslation('CONTACTS.ERROR_PRIVACY_REQUIRED') }}</p>
+                <p *ngIf="successMail" class="success">{{ getTranslation('CONTACTS.SUCCESS_MESSAGE') }}</p>
 
+                <div class="submit-area" *ngIf="isChecked && ngForm.form.valid">
+                    <button type="submit" value="Submit">{{ getTranslation('CONTACTS.BUTTON') }}</button>
+                </div>
             </form>
         </div>
     </div>

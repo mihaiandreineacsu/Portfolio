@@ -7,10 +7,11 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+  styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  links: Array<{ text: string; link: string; target: string }> = [
+
+  links: Array<{ text: string, link: string, target: string }> = [
     {
       text: 'Github',
       link: 'https://github.com/OgulcanErdag',
@@ -23,5 +24,6 @@ export class FooterComponent {
     },
     { text: 'Email', link: 'mailto:info@ogulcan-erdag.com', target: '_blank' },
     { text: 'Impressum', link: '#', target: '' },
-  ];
+  ]
+
 }

@@ -6,6 +6,9 @@ import { TranslationStructure } from '../models/translation.interface'
   providedIn: 'root'
 })
 export class TranslationsService {
+  getCurrentLanguage() {
+    throw new Error('Method not implemented.');
+  }
   private translations: { en: TranslationStructure; de: TranslationStructure } = translations;
   private currentLanguage: 'en' | 'de' = 'en';
 

@@ -35,6 +35,7 @@ export class ContactComponent implements OnInit {
       email: "",
       message: "",
   }
+contactForm: any;
 
   ngOnInit() {
     this.placeholders.name = this.getTranslation('CONTACTS.PLACEHOLDER1');
@@ -57,6 +58,23 @@ export class ContactComponent implements OnInit {
       this.showCheckboxError = false;
     }
   }
+
+  clearEmailError() {
+    if (this.contactData.email.length > 0 && !this.isEmailValid(this.contactData.email)) {
+        this.contactData.email = ""; // Setze das E-Mail-Feld zurück
+    }
+}
+
+checkEmailValidity() {
+    if (!this.isEmailValid(this.contactData.email)) {
+        this.contactData.email = ""; // Setze das E-Mail-Feld zurück, wenn es ungültig ist
+    }
+}
+
+isEmailValid(email: string): boolean {
+    const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return pattern.test(email);
+}
 
   post = {
     endPoint: 'https://ogulcan-erdag.com/sendMail.php',

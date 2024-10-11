@@ -7,18 +7,20 @@ import { TranslationsService } from '../../services/translations.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './start.component.html',
-  styleUrl: './start.component.scss',
+  styleUrl: './start.component.scss'
 })
+
 export class StartComponent {
+
   translationData = inject(TranslationsService);
   activeLang: 'en' | 'de' = 'en';
 
   setActiveLang(lang: 'en' | 'de') {
     this.activeLang = lang;
-    this.translationData.setLanguage(lang);
+    this.translationData.setLanguage(lang);  
   }
 
   getTranslation(key: string): string {
-    return this.translationData.getTranslation(key);
+    return this.translationData.getTranslation(key); 
   }
 }

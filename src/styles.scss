@@ -14,8 +14,8 @@ body {
     overflow-x: hidden;
     /* Für Webkit-basierte Browser (Chrome, Safari, Edge) */
 ::-webkit-scrollbar {
-  width: 6px; /* Sehr schmale Scrollbar */
-  height: 6px; /* Für horizontale Scrollbars */
+  width: 0px; /* Sehr schmale Scrollbar */
+  height: 0px; /* Für horizontale Scrollbars */
 }
 
 ::-webkit-scrollbar-track {
@@ -33,10 +33,10 @@ body {
 }
 
 /* Für Firefox */
-* {
-  scrollbar-color: black rgba(61, 207, 182, 0.1); /* Thumb: Schwarz, Track: leicht transparent */
-  scrollbar-width: thin; /* Sehr schmale Scrollbar */
-}
+// * {
+//   scrollbar-color: black rgba(61, 207, 182, 0.1); /* Thumb: Schwarz, Track: leicht transparent */
+//   scrollbar-width: thin; /* Sehr schmale Scrollbar */
+// }
 }
 
 p {

@@ -19,21 +19,7 @@
 
 }
 .logo {
-    width: 150px;
-    height: 169px;
-    animation: pulseLogo 3s ease-in-out infinite; 
-}
-
-@keyframes pulseLogo {
-    0% {
-        transform: scale(1); 
-    }
-    50% {
-        transform: scale(1.2); 
-    }
-    100% {
-        transform: scale(1); 
-    }
+    width: 50px;
 }
 
 .header-left {
@@ -138,8 +124,7 @@
 
     }
     .logo {
-        width: 80px !important;
-        height: 90px !important;
+        width: 50px !important;
     }
     .header-left {
         display: none;
