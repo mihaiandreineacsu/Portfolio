@@ -8,7 +8,6 @@
 @if (isProjectLayerVisible) {
     <div class="layer-container" (click)="hideLayer()">
         <div class="inner-layer" (click)="$event.stopPropagation()">
-            
             <div class="layer-left">
                 <p class="number">{{ currentProject.number }}</p>
                 <p class="project-name">{{ currentProject.name }}</p>
@@ -37,18 +36,16 @@
                     </a>
                 </div>
             </div>
-            <div class="layer-right" >
+            <div class="layer-right">
                 <div class="close" (click)="hideLayer()">
                     <img src="../../assets/img/close_white.svg" alt="">
                 </div>
                 <img [src]="currentProject.imageUrl" alt="">
                 <div class="buttons-right">
-                    
                     <div class="button-right" (click)="previousProject()" [class.disabled]="currentProjectIndex === 0">
                         <img src="../../assets/img/arrow_back_green.svg" alt="">
                         <p>{{ getTranslation('PROJECTS.PREVIOUS') }}</p>
                     </div>
-                
                     <div class="button-right" (click)="nextProject()" [class.disabled]="currentProjectIndex === projects.length - 1">
                         <p>{{ getTranslation('PROJECTS.NEXT') }}</p>
                         <img src="../../assets/img/arrow_forward_green.svg" alt="">
@@ -56,8 +53,8 @@
                 </div>
             </div>   
         </div>
-
-        <div class="inner-layer-mobile">
+    
+        <div class="inner-layer-mobile" (click)="$event.stopPropagation()">
             <div class="close" (click)="hideLayer()">
                 <img src="../../assets/img/close_white.svg" alt="">
             </div>
@@ -90,16 +87,12 @@
                     </a>
                 </div>
             </div>
-            <div class="layer-right" >
-                
+            <div class="layer-right">
                 <div class="buttons-right">
-                    
                     <div class="button-right" (click)="previousProject()" [class.disabled]="currentProjectIndex === 0">
                         <img src="../../assets/img/arrow_back_green.svg" alt="">
                         <p>{{ getTranslation('PROJECTS.PREVIOUS') }}</p>
                     </div>
-                
-                
                     <div class="button-right" (click)="nextProject()" [class.disabled]="currentProjectIndex === projects.length - 1">
                         <p>{{ getTranslation('PROJECTS.NEXT') }}</p>
                         <img src="../../assets/img/arrow_forward_green.svg" alt="">

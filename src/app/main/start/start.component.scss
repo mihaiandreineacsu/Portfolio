@@ -97,6 +97,8 @@
 .line-element-left {
   height: 312px;
   z-index: 1;
+  filter: brightness(1.2);
+  transition: filter 0.3s ease;
   @include dFlex($fd: column, $jc: space-between, $ai: center);
 }
 
@@ -105,13 +107,25 @@
   height: 48px;
   border: 1px solid $standard-green;
   border-radius: 15px;
+  cursor: pointer;
   @include dFlex($jc: center, $ai: center);
+
   > img {
     width: 17px;
     position: relative;
     animation: bounce 1s ease-in-out infinite;
+
+    // Hinzufügen des brightness-Filters
+  }
+
+  &:hover {
+    // Filter für die Helligkeit hinzufügen
+    > img {
+      filter: brightness(1.2); // 1.2 erhöht die Helligkeit um 20%
+    }
   }
 }
+
 
 @keyframes bounce {
   0%,
@@ -159,9 +173,7 @@
   gap: 4px;
   padding-left: 12px;
   margin-top: 12px;
-  &:hover {
-    cursor: pointer;
-  }
+ 
   &:hover .link-dot {
     opacity: 1;
   }

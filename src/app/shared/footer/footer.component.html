@@ -1,59 +1,80 @@
 <div id="footer-container">
-    <div class="footer-content">
-        <div class="footer-left">
-            <img src="../../../assets/img/logo.png" alt="">
-            <p>Web Developer</p>
-            <p>Stuttgart</p>
-        </div>
-        
-        <div class="footer-middle">
-            <p>© Ogulcan Erdag 2024</p>
-        </div>
-
-        <div class="footer-right">
-                <div class="link-right">
-                    <div class="dot"></div>
-                    <a href="https://github.com/OgulcanErdag" target="_blank">Github</a>
-                </div>
-                <div class="link-right">
-                    <div class="dot"></div>
-                    <a href="https://www.linkedin.com/in/ogulcan-erdag-73579b276/" target="_blank">LinkedIn</a>
-                </div>
-                <div class="link-right">
-                    <div class="dot"></div>
-                    <a ng-href="mailto:info@ogulcan-erdag.com" target="_blank">Email</a>
-                </div>
-                <div class="link-right">
-                    <div class="dot"></div>
-                    <a [routerLink]="['/impressum']">Impressum</a>
-                </div>
-            
-        </div>
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="../../../assets/img/logo.png" alt="Logo" />
+      <p>Web Developer</p>
+      <p>Stuttgart</p>
     </div>
 
-    <div class="footer-content-mobile">
-        <div class="footer-top">
-            <div class="footer-left">
-                <img src="../../../assets/img/logo.png" alt="">
-                <p>Web Developer</p>
-                <p>Stuttgart</p>
-            </div>
-            <div class="footer-right-mobile">
-                @for (link of links; track link.text) {
-                    <div class="link-right">
-                        <div class="dot"></div>
-                        <a href={{link.link}}>{{link.text}}</a>
-                    </div>
-                }
-            </div>
-            
-            
-        </div>
-
-        <div class="footer-bottom">
-            <div class="footer-middle">
-                <p>© Ogulcan Erdag 2024</p>
-            </div>
-        </div>
+    <div class="footer-middle">
+      <p>© Ogulcan Erdag 2024</p>
     </div>
+
+    <div class="footer-right">
+      <div class="link-right" *ngFor="let link of links">
+        <div class="dot"></div>
+        <ng-container *ngIf="link.link !== '#'">
+          <!-- Externe Links (GitHub, LinkedIn) -->
+          <a 
+            *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'" 
+            [href]="link.link" 
+            [attr.target]="link.target"
+          >{{ link.text }}</a>
+
+          <!-- E-Mail-Link für das Kontaktformular -->
+          <a 
+            *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'" 
+            (click)="scrollToSection('contact')"
+            style="cursor: pointer;"
+          >{{ link.text }}</a>
+        </ng-container>
+
+        <!-- Impressum-Link -->
+        <a 
+          *ngIf="link.link === '#'" 
+          [routerLink]="'/impressum'"
+        >{{ link.text }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-content-mobile">
+    <div class="footer-top">
+      <div class="footer-left">
+        <img src="../../../assets/img/logo.png" alt="Logo" />
+        <p>Web Developer</p>
+        <p>Stuttgart</p>
+      </div>
+      <div class="footer-right-mobile">
+        <div class="link-right" *ngFor="let link of links">
+          <div class="dot"></div>
+          <ng-container *ngIf="link.link !== '#'">
+            <a 
+              *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'" 
+              [href]="link.link" 
+              [attr.target]="link.target"
+            >{{ link.text }}</a>
+
+            <a 
+              *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'" 
+              (click)="scrollToSection('contact')"
+              style="cursor: pointer;"
+            >{{ link.text }}</a>
+          </ng-container>
+
+          <!-- Impressum-Link -->
+          <a 
+            *ngIf="link.link === '#'" 
+            [routerLink]="'/impressum'"
+          >{{ link.text }}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-middle">
+        <p>© Ogulcan Erdag 2024</p>
+      </div>
+    </div>
+  </div>
 </div>

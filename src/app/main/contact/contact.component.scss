@@ -33,6 +33,8 @@
     }
 }
 
+
+
 form {
     @include dFlex($fd: column, $jc: flex-start, $ai: flex-start);
     > .line {
@@ -132,11 +134,20 @@ input, textarea {
     > button {
         color: rgba(255,255,255,0.8);
         border-color: rgba(255,255,255,0.8);
+        padding: 10px 20px; // Füge etwas Padding hinzu
         &:hover {
             color: rgba(255,255,255,0.8);
             border-color: rgba(255,255,255,0.8);
             background-color: rgba(61,207,182,0.15);
             cursor: pointer;
+        }
+
+        &:disabled {
+            background-color: rgba(255, 255, 255, 0.2); // Deaktivierte Hintergrundfarbe
+            color: rgba(255, 255, 255, 0.5); // Deaktivierte Textfarbe
+            cursor: not-allowed; // Zeigt, dass der Button nicht anklickbar ist
+            opacity: 0.6; // Macht den Button halbtransparent
+            border-color: rgba(255, 255, 255, 0.5); // Deaktivierte Rahmenfarbe
         }
     }
 }

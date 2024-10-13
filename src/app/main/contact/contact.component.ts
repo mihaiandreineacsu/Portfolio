@@ -1,5 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  inject,
+  OnInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { TranslationsService } from '../../services/translations.service';
 import { HttpClient } from '@angular/common/http';
@@ -10,32 +16,30 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrls: ['./contact.component.scss'],
 })
 export class ContactComponent implements OnInit {
-
   http = inject(HttpClient);
 
   isChecked = false;
   showCheckboxError = false;
   successMail = false;
   mailTest = false;
-  
+
   translationData = inject(TranslationsService);
   activeLang: 'en' | 'de' = 'en';
 
   placeholders = {
     name: '',
     email: '',
-    message: ''
+    message: '',
   };
 
   contactData = {
-      name: "",
-      email: "",
-      message: "",
-  }
-contactForm: any;
+    name: '',
+    email: '',
+    message: '',
+  };
 
   ngOnInit() {
     this.placeholders.name = this.getTranslation('CONTACTS.PLACEHOLDER1');
@@ -44,6 +48,7 @@ contactForm: any;
   }
 
   @ViewChild('messageInput') messageInput!: ElementRef;
+
   focusTextArea(inputElement: HTMLElement) {
     inputElement.focus();
   }
@@ -60,21 +65,24 @@ contactForm: any;
   }
 
   clearEmailError() {
-    if (this.contactData.email.length > 0 && !this.isEmailValid(this.contactData.email)) {
-        this.contactData.email = ""; // Setze das E-Mail-Feld zurück
+    if (
+      this.contactData.email.length > 0 &&
+      !this.isEmailValid(this.contactData.email)
+    ) {
+      this.contactData.email = ''; // Setze das E-Mail-Feld zurück
     }
-}
+  }
 
-checkEmailValidity() {
+  checkEmailValidity() {
     if (!this.isEmailValid(this.contactData.email)) {
-        this.contactData.email = ""; // Setze das E-Mail-Feld zurück, wenn es ungültig ist
+      this.contactData.email = ''; // Setze das E-Mail-Feld zurück, wenn es ungültig ist
     }
-}
+  }
 
-isEmailValid(email: string): boolean {
+  isEmailValid(email: string): boolean {
     const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return pattern.test(email);
-}
+  }
 
   post = {
     endPoint: 'https://ogulcan-erdag.com/sendMail.php',
@@ -92,21 +100,21 @@ isEmailValid(email: string): boolean {
       this.handleCheckboxError();
       return;
     }
-  
+
     if (!ngForm.valid) {
       this.handleSubmitError(ngForm);
       return;
     }
-  
+
     if (ngForm.submitted && ngForm.form.valid) {
       this.processFormSubmission(ngForm);
     }
   }
-  
+
   handleCheckboxError() {
     this.showCheckboxError = true;
   }
-  
+
   processFormSubmission(ngForm: NgForm) {
     if (!this.mailTest) {
       this.submitForm(ngForm);
@@ -115,9 +123,10 @@ isEmailValid(email: string): boolean {
       ngForm.resetForm();
     }
   }
-  
+
   submitForm(ngForm: NgForm) {
-    this.http.post(this.post.endPoint, this.post.body(this.contactData))
+    this.http
+      .post(this.post.endPoint, this.post.body(this.contactData))
       .subscribe({
         next: (response) => {
           this.handleSubmitSuccess(ngForm);
@@ -138,32 +147,32 @@ isEmailValid(email: string): boolean {
 
   showNameError(ngForm: NgForm) {
     if (ngForm.controls['name'] && ngForm.controls['name'].invalid) {
-      this.placeholders.name = "Oops! It seems your name is missing";
+      this.placeholders.name = 'Oops! It seems your name is missing';
     }
   }
 
   showMailError(ngForm: NgForm) {
     if (ngForm.controls['email'] && ngForm.controls['email'].invalid) {
       if (ngForm.controls['email'].errors?.['pattern']) {
-        this.placeholders.email = "Please enter a valid email address";
-        this.contactData.email = "";
+        this.placeholders.email = 'Please enter a valid email address';
+        this.contactData.email = '';
       } else {
-        this.placeholders.email = "Hoppla! Your email is required";
-        this.contactData.email = "";
+        this.placeholders.email = 'Hoppla! Your email is required';
+        this.contactData.email = '';
       }
     }
   }
 
   showMessageError(ngForm: NgForm) {
     if (ngForm.controls['message'] && ngForm.controls['message'].invalid) {
-      this.placeholders.message = "What do you need to develop?";
+      this.placeholders.message = 'What do you need to develop?';
     }
   }
 
   handleSubmitSuccess(ngForm: NgForm) {
-    this.contactData.name = "";
-    this.contactData.email = "";
-    this.contactData.message = "";
+    this.contactData.name = '';
+    this.contactData.email = '';
+    this.contactData.message = '';
     this.placeholders.name = this.getTranslation('CONTACTS.PLACEHOLDER1');
     this.placeholders.email = this.getTranslation('CONTACTS.PLACEHOLDER2');
     this.placeholders.message = this.getTranslation('CONTACTS.PLACEHOLDER3');
@@ -178,10 +187,12 @@ isEmailValid(email: string): boolean {
 
   setActiveLang(lang: 'en' | 'de') {
     this.activeLang = lang;
-    this.translationData.setLanguage(lang);  
+    this.translationData.setLanguage(lang);
   }
 
   getTranslation(key: string): string {
-    return this.translationData.getTranslation(key);  
+    return this.translationData.getTranslation(key);
   }
+
+  
 }

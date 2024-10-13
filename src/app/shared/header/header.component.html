@@ -1,56 +1,85 @@
-<div id="header-container">
+<div id="header-container" [class.header-scrolled]="isScrolled">
     <div class="header-content">
-    
-    <div class="header-left">
+      <div class="header-left">
         <div class="translate-controller">
-            <div class="translate-en" [ngClass]="{'translate-active': activeLang === 'en'}" (click)="setActiveLang('en')">EN</div>
-            <div class="translate-de" [ngClass]="{'translate-active': activeLang === 'de'}" (click)="setActiveLang('de')">DE</div>
+          <div
+            class="translate-en"
+            [ngClass]="{ 'translate-active': activeLang === 'en' }"
+            (click)="setActiveLang('en')"
+          >
+            EN
+          </div>
+          <div
+            class="translate-de"
+            [ngClass]="{ 'translate-active': activeLang === 'de' }"
+            (click)="setActiveLang('de')"
+          >
+            DE
+          </div>
         </div>
-
-        <div class="header-links" >
-            <div class="header-single-link" id="aboutme">
-                <a href="#aboutme">{{ getTranslation('HEADER.ABOUT') }}</a>
-                <div class="link-dot"></div>
-            </div>
-            <div class="header-single-link" id="skills">
-                <a href="#skills">{{ getTranslation('HEADER.SKILLS') }}</a>
-                <div class="link-dot"></div>
-            </div>
-            <div class="header-single-link" id="projects">
-                <a href="#projects">{{ getTranslation('HEADER.PROJECTS') }}</a>
-                <div class="link-dot"></div>
-            </div>
-        </div> 
-        
-    </div>
-
-    <a [routerLink]="['/']" ><img class="logo" src="../../../assets/img/logo.png" alt=""></a>
-
-    <img (click)="toggleMobileMenu($event)" class="burger" src="../../../assets/img/menu.svg" alt="">
-
-    <div (click)="$event.stopPropagation()" [ngStyle]="{'display': isMobileMenu ? 'block' : 'none'}" class="mobile-menu">
-        
         <div class="header-links">
-            <div class="header-single-link" id="aboutme">
-                <a href="#aboutme">{{ getTranslation('HEADER.ABOUT') }}</a>
-                <div class="link-dot"></div>
-            </div>
-            <div class="header-single-link" id="skills">
-                <a href="#skills">{{ getTranslation('HEADER.SKILLS') }}</a>
-                <div class="link-dot"></div>
-            </div>
-            <div class="header-single-link" id="projects">
-                <a href="#projects">{{ getTranslation('HEADER.PROJECTS') }}</a>
-                <div class="link-dot"></div>
-            </div>
+          <div class="header-single-link" (click)="scrollToSection('aboutme')">
+            <a>{{ getTranslation("HEADER.ABOUT") }}</a>
+            <div class="link-dot"></div>
+          </div>
+          <div class="header-single-link" (click)="scrollToSection('skills')">
+            <a>{{ getTranslation("HEADER.SKILLS") }}</a>
+            <div class="link-dot"></div>
+          </div>
+          <div class="header-single-link" (click)="scrollToSection('projects')">
+            <a>{{ getTranslation("HEADER.PROJECTS") }}</a>
+            <div class="link-dot"></div>
+          </div>
         </div>
-
+      </div>
+      <a (click)="scrollToTop()" [routerLink]="['/']">
+        <img class="logo" src="../../../assets/img/logo.png" alt=""/>
+    </a>
+  
+      <img
+        (click)="toggleMobileMenu($event)"
+        class="burger"
+        src="../../../assets/img/menu.svg"
+        alt=""
+      />
+  
+      <div
+        (click)="$event.stopPropagation()"
+        [ngStyle]="{ display: isMobileMenu ? 'block' : 'none' }"
+        class="mobile-menu"
+      >
+        <div class="header-links">
+            <div class="header-single-link" (click)="scrollToSection('aboutme')">
+                <a>{{ getTranslation("HEADER.ABOUT") }}</a>
+                <div class="link-dot"></div>
+          </div>
+          <div class="header-single-link" (click)="scrollToSection('skills')">
+            <a>{{ getTranslation("HEADER.SKILLS") }}</a>
+            <div class="link-dot"></div>
+          </div>
+          <div class="header-single-link" (click)="scrollToSection('projects')">
+            <a>{{ getTranslation("HEADER.PROJECTS") }}</a>
+            <div class="link-dot"></div>
+          </div>
+        </div>
+  
         <div class="translate-controller">
-            <div class="translate-en" [ngClass]="{'translate-active': activeLang === 'en'}" (click)="setActiveLang('en')">EN</div>
-            <div class="translate-de" [ngClass]="{'translate-active': activeLang === 'de'}" (click)="setActiveLang('de')">DE</div>
+          <div
+            class="translate-en"
+            [ngClass]="{ 'translate-active': activeLang === 'en' }"
+            (click)="setActiveLang('en')"
+          >
+            EN
+          </div>
+          <div
+            class="translate-de"
+            [ngClass]="{ 'translate-active': activeLang === 'de' }"
+            (click)="setActiveLang('de')"
+          >
+            DE
+          </div>
         </div>
-        
+      </div>
     </div>
-
-    </div>
-</div>
+  </div>
+  

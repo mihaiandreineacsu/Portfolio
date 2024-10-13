@@ -119,6 +119,10 @@
     }
 }
 
+.no-scroll {
+    overflow: hidden;
+  }
+
 .buttons-right {
     @include dFlex($fd: row, $jc: flex-start, $ai: flex-start);
     gap: 30px;
@@ -172,7 +176,7 @@
         height: auto;
         
         > img {
-            width: 100%;
+            width: 80%;
             max-width: 500px;
             border-radius: 30px;
         }
@@ -196,7 +200,7 @@
             font-size: 72px;
         }
         > .project-name {
-            font-size: 56px;
+            font-size: 40px;
             margin-top: -10px;
             padding-bottom: 20px;
         }

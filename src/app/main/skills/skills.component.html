@@ -1,51 +1,52 @@
-<section id="skills-container">
-    <div class="skills-content">
-      <h3>{{ getTranslation('SKILLS.TOP_HEADLINE') }}</h3>
-      <div class="skills-main-content">
-        <div class="skills-left">
-          <h1>{{ getTranslation('SKILLS.HEADLINE1') }}</h1>
-          <p>{{ getTranslation('SKILLS.TEXT1') }}</p>
-          <h2>{{ getTranslation('SKILLS.HEADLINE2') }}
-            <span [ngStyle]="{'color': 'rgba(61,207,182,1)'}"> {{ getTranslation('SKILLS.HEADLINE_SPAN') }}</span>
-          </h2>
-          <p [ngStyle]="{'font-size': '16px'}">{{ getTranslation('SKILLS.TEXT2') }}</p>
-          <a href="#contact">
-            <button [ngStyle]="{'width': '130px'}"><span>{{ getTranslation('SKILLS.BUTTON') }}</span></button>
-          </a>
-        </div>
-  
-        <div class="skills-icons">
-          @for (skill of skills; track skill.text; let index = $index) {
-            @if (index === skills.length - 1) {
-              <div class="bubble-container">
-                <div class="speech-bubble" #bubbleRef [style.display]="isBubbleVisible ? 'block' : 'none'">
-                  <p>{{ getTranslation('SKILLS.BUBBLE') }}</p>
-                  <div class="skills-bubble">
-                    <div class="skill-bubble">
-                      <img src="../../../assets/img/skills/react.png" alt="React">
-                      <p>React</p>
-                    </div>
-                    <div class="skill-bubble">
-                      <img src="../../../assets/img/skills/vue.png" alt="Vue">
-                      <p>Vue</p>
-                    </div>
+
+<div id="skills-container">
+  <div class="skills-content">
+    <h3>{{ getTranslation('SKILLS.TOP_HEADLINE') }}</h3>
+    <div class="skills-main-content">
+      <div class="skills-left">
+        <h1>{{ getTranslation('SKILLS.HEADLINE1') }}</h1>
+        <p>{{ getTranslation('SKILLS.TEXT1') }}</p>
+        <h2>{{ getTranslation('SKILLS.HEADLINE2') }}
+          <span [ngStyle]="{'color': 'rgba(61,207,182,1)'}"> {{ getTranslation('SKILLS.HEADLINE_SPAN') }}</span>
+        </h2>
+        <p [ngStyle]="{'font-size': '16px'}">{{ getTranslation('SKILLS.TEXT2') }}</p>
+        <!-- Button for navigating to contact section -->
+        <button [ngStyle]="{'width': '130px'}" (click)="scrollToSection('skills')">
+          <span>{{ getTranslation('SKILLS.BUTTON') }}</span>
+        </button>
+      </div>
+
+      <div class="skills-icons">
+        @for (skill of skills; track skill.text; let index = $index) {
+          @if (index === skills.length - 1) {
+            <div class="bubble-container">
+              <div class="speech-bubble" #bubbleRef [style.display]="isBubbleVisible ? 'block' : 'none'">
+                <p>{{ getTranslation('SKILLS.BUBBLE') }}</p>
+                <div class="skills-bubble">
+                  <div class="skill-bubble">
+                    <img src="../../../assets/img/skills/react.png" alt="React">
+                    <p>React</p>
+                  </div>
+                  <div class="skill-bubble">
+                    <img src="../../../assets/img/skills/vue.png" alt="Vue">
+                    <p>Vue</p>
                   </div>
                 </div>
-  
-                <div class="skill-icon" (click)="openBubble($event)">
-                  <img src="{{skill.img}}" alt="{{skill.text}}">
-                  <p [ngStyle]="{'color': isBubbleVisible ? 'rgba(61,207,182,1)' : 'white'}">{{skill.text}}</p>
-                </div>
               </div>
-            } @else {
-              <div class="skill-icon">
+
+              <div class="skill-icon" (click)="openBubble($event)">
                 <img src="{{skill.img}}" alt="{{skill.text}}">
-                <p>{{skill.text}}</p>
+                <p [ngStyle]="{'color': isBubbleVisible ? 'rgba(61,207,182,1)' : 'white'}">{{skill.text}}</p>
               </div>
-            }
+            </div>
+          } @else {
+            <div class="skill-icon">
+              <img src="{{skill.img}}" alt="{{skill.text}}">
+              <p>{{skill.text}}</p>
+            </div>
           }
-        </div>
+        }
       </div>
     </div>
-  </section>
-  
+  </div>
+</div>

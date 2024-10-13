@@ -1,3 +1,4 @@
+
 <div id="contacts-container">
     <div class="contacts-content">
         <div class="contacts-left">
@@ -54,13 +55,19 @@
                     <div class="checkbox" (click)="toggleCheckbox()">
                         <img [src]="isChecked ? '../../../assets/img/check_checked.svg' : '../../../assets/img/check_empty.svg'" alt="">
                     </div>
-                    <p>{{ getTranslation('CONTACTS.TEXT3') }} <a [routerLink]="['/privacy']" target="_blank">{{ getTranslation('CONTACTS.SPAN2') }}</a> {{ getTranslation('CONTACTS.TEXT4') }}</p>
+                    <p>{{ getTranslation('CONTACTS.TEXT3') }} <a [routerLink]="['/privacy']">{{ getTranslation('CONTACTS.SPAN2') }}</a> {{ getTranslation('CONTACTS.TEXT4') }}</p>
                 </div>
                 <p *ngIf="showCheckboxError" style="color: red;">{{ getTranslation('CONTACTS.ERROR_PRIVACY_REQUIRED') }}</p>
                 <p *ngIf="successMail" class="success">{{ getTranslation('CONTACTS.SUCCESS_MESSAGE') }}</p>
 
-                <div class="submit-area" *ngIf="isChecked && ngForm.form.valid">
-                    <button type="submit" value="Submit">{{ getTranslation('CONTACTS.BUTTON') }}</button>
+                <div class="submit-area">
+                    <button type="submit" 
+                            [disabled]="contactData.name.trim().length === 0 || 
+                                       contactData.email.trim().length === 0 || 
+                                       contactData.message.trim().length === 0 || 
+                                       !isChecked">
+                        {{ getTranslation('CONTACTS.BUTTON') }}
+                    </button>
                 </div>
             </form>
         </div>

@@ -11,6 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class FooterComponent {
 
+
   links: Array<{ text: string, link: string, target: string }> = [
     {
       text: 'Github',
@@ -22,8 +23,14 @@ export class FooterComponent {
       link: 'https://www.linkedin.com/in/ogulcan-erdag-73579b276/',
       target: '_blank',
     },
-    { text: 'Email', link: 'mailto:info@ogulcan-erdag.com', target: '_blank' },
-    { text: 'Impressum', link: '#', target: '' },
+    { text: 'Email', link: 'mailto:info@ogulcan-erdag.com', target: '' },
+    { text: 'Impressum', link: '#', target: '' },  
   ]
 
+  scrollToSection(sectionId: string) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

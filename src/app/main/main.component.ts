@@ -1,4 +1,4 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { StartComponent } from './start/start.component';
 import { AboutmeComponent } from './aboutme/aboutme.component';
 import { SkillsComponent } from "./skills/skills.component";
@@ -7,8 +7,6 @@ import { ContactComponent } from './contact/contact.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { CommonModule } from '@angular/common';
 import { TranslationsService } from '../services/translations.service';
-import { BehaviorSubject } from 'rxjs';
-
 
 @Component({
   selector: 'app-main',
@@ -19,8 +17,6 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class MainComponent {
-
-  constructor(private renderer: Renderer2) {}
 
   projects = [
     {
@@ -35,7 +31,7 @@ export class MainComponent {
     {
       number: '02',
       name: 'DABubble',
-      description: 'As soon as the project is published, the description will also be made public. ',
+      description: 'As soon as the project is published, the description will also be made public.',
       skills: ['CSS', 'HTML', 'TypeScript', 'Angular', 'Firebase'],
       imageUrl: '../../assets/img/preview_dabubble.png',
       githubLink: 'https://github.com/OgulcanErdag/DABubble.git',
@@ -58,11 +54,12 @@ export class MainComponent {
   showLayer(projectIndex: number) {
     this.currentProjectIndex = projectIndex;
     this.isProjectLayerVisible = true;
-    this.renderer.addClass(document.body, 'no-scroll');
+    document.body.style.overflow = 'hidden';  // Scrollen verhindern
   }
 
   hideLayer() {
     this.isProjectLayerVisible = false;
+    document.body.style.overflow = ''; // Scrollen wieder aktivieren
   }
 
   nextProject() {

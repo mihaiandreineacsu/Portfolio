@@ -19,7 +19,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent; /* Hintergrund der Scrollbar (unsichtbar) */
+  background: transparentize($color: #000000, $amount: 0); /* Hintergrund der Scrollbar (unsichtbar) */
 }
 
 ::-webkit-scrollbar-thumb {
