@@ -11,7 +11,7 @@
 
 .footer-content {
     @include dFlex($fd: row, $jc:space-between, $ai: center);
-    width: 1350px;
+    width: 1920px;
     position: relative;
     @include margin-sides($le: 96px, $ri: 96px);
 }
@@ -23,6 +23,13 @@
     display: none;
     gap: 50px;
     @include margin-sides($le: 0px, $ri: 0px);
+}
+
+.highlight {
+    background-color: #0C3E35;  /* Hintergrundfarbe auf das gesamte Input-Feld */
+    color: white;  /* Optional: Textfarbe anpassen, damit es lesbar bleibt */
+    transition: background-color 0.5s ease-in-out, filter 0.5s ease-in-out;  /* Glatter Übergangseffekt */
+    filter: brightness(1.2);  /* Erhöht die Helligkeit um 20% */
 }
 
 .footer-top {

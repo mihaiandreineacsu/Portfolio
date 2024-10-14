@@ -15,25 +15,26 @@
         <div class="dot"></div>
         <ng-container *ngIf="link.link !== '#'">
           <!-- Externe Links (GitHub, LinkedIn) -->
-          <a 
-            *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'" 
-            [href]="link.link" 
+          <a
+            *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'"
+            [href]="link.link"
             [attr.target]="link.target"
-          >{{ link.text }}</a>
+            >{{ link.text }}</a
+          >
 
           <!-- E-Mail-Link für das Kontaktformular -->
-          <a 
-            *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'" 
-            (click)="scrollToSection('contact')"
-            style="cursor: pointer;"
-          >{{ link.text }}</a>
+          <a
+            *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'"
+            (click)="scrollToInput('name')"
+            style="cursor: pointer"
+            >{{ link.text }}</a
+          >
         </ng-container>
 
         <!-- Impressum-Link -->
-        <a 
-          *ngIf="link.link === '#'" 
-          [routerLink]="'/impressum'"
-        >{{ link.text }}</a>
+        <a *ngIf="link.link === '#'" [routerLink]="'/impressum'">{{
+          link.text
+        }}</a>
       </div>
     </div>
   </div>
@@ -49,24 +50,25 @@
         <div class="link-right" *ngFor="let link of links">
           <div class="dot"></div>
           <ng-container *ngIf="link.link !== '#'">
-            <a 
-              *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'" 
-              [href]="link.link" 
+            <a
+              *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'"
+              [href]="link.link"
               [attr.target]="link.target"
-            >{{ link.text }}</a>
+              >{{ link.text }}</a
+            >
 
-            <a 
-              *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'" 
-              (click)="scrollToSection('contact')"
-              style="cursor: pointer;"
-            >{{ link.text }}</a>
+            <a
+              *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'"
+              (click)="scrollToInput('name')"
+              style="cursor: pointer"
+              >{{ link.text }}</a
+            >
           </ng-container>
 
           <!-- Impressum-Link -->
-          <a 
-            *ngIf="link.link === '#'" 
-            [routerLink]="'/impressum'"
-          >{{ link.text }}</a>
+          <a *ngIf="link.link === '#'" [routerLink]="'/impressum'">{{
+            link.text
+          }}</a>
         </div>
       </div>
     </div>

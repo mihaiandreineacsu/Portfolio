@@ -3,10 +3,16 @@
   background: linear-gradient(45deg, #1c1c1c 40%, #08463B 100%);
   padding: 300px 96px 300px 96px;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
 p {
   font-family: 'Karla';
+}
+
+.legal-content {
+  width: 1440px;
 }
 
 @media (max-width: 1050px) {

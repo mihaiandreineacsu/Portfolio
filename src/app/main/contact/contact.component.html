@@ -61,11 +61,7 @@
                 <p *ngIf="successMail" class="success">{{ getTranslation('CONTACTS.SUCCESS_MESSAGE') }}</p>
 
                 <div class="submit-area">
-                    <button type="submit" 
-                            [disabled]="contactData.name.trim().length === 0 || 
-                                       contactData.email.trim().length === 0 || 
-                                       contactData.message.trim().length === 0 || 
-                                       !isChecked">
+                    <button type="submit" [disabled]="!contactData.name || !contactData.email || !contactData.message || !isChecked">
                         {{ getTranslation('CONTACTS.BUTTON') }}
                     </button>
                 </div>

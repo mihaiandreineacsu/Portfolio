@@ -194,5 +194,23 @@ export class ContactComponent implements OnInit {
     return this.translationData.getTranslation(key);
   }
 
+
+  scrollToInput(inputId: string) {
+    const inputElement = document.getElementById(inputId);  // Namensfeld
+  
+    if (inputElement) {
+      inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });  // Scrollt exakt zum Namensfeld
+  
+      setTimeout(() => {
+        inputElement.focus();  // Setzt den Fokus
+        inputElement.classList.add('highlight');  // Fügt die Highlight-Klasse hinzu
+  
+        // Entfernt die Klasse nach einer Zeit (z.B. 2 Sekunden)
+        setTimeout(() => {
+          inputElement.classList.remove('highlight');
+        }, 2000);
+      }, 500); // Fokus und Highlight setzen, nachdem das Scrollen abgeschlossen ist
+    }
+  }
   
 }

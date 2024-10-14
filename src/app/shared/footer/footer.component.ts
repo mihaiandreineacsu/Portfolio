@@ -7,12 +7,10 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-
-
-  links: Array<{ text: string, link: string, target: string }> = [
+  links: Array<{ text: string; link: string; target: string }> = [
     {
       text: 'Github',
       link: 'https://github.com/OgulcanErdag',
@@ -24,13 +22,29 @@ export class FooterComponent {
       target: '_blank',
     },
     { text: 'Email', link: 'mailto:info@ogulcan-erdag.com', target: '' },
-    { text: 'Impressum', link: '#', target: '' },  
-  ]
+    { text: 'Impressum', link: '#', target: '' },
+  ];
 
-  scrollToSection(sectionId: string) {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  scrollToInput(name: string) {
+    const inputElement = document.getElementById(name); 
+
+    if (inputElement) {
+      
+      inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    
+      setTimeout(() => {
+        inputElement.focus(); 
+        inputElement.classList.add('highlight');
+
+       
+        setTimeout(() => {
+          inputElement.classList.remove('highlight');
+        }, 2000);
+      }, 500); 
     }
   }
+
+  
+  
 }
