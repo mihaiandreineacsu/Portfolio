@@ -33,7 +33,7 @@
                         placeholder="{{ placeholders.email }}" 
                         (input)="clearEmailError()"
                         (blur)="checkEmailValidity()"
-                        pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
+                        required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
                     <div *ngIf="contactForm.controls['email']?.invalid && (contactForm.controls['email']?.touched || contactForm.submitted)" class="error-message">
                         <p *ngIf="contactForm.controls['email']?.errors?.['required']" style="color: red;">{{ getTranslation('CONTACTS.ERROR_EMAIL_REQUIRED') }}</p>
                         <p *ngIf="contactForm.controls['email']?.errors?.['pattern']" style="color: red;">{{ getTranslation('CONTACTS.ERROR_INVALID_EMAIL') }}</p>
