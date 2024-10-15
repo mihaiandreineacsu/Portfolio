@@ -69,13 +69,13 @@ export class ContactComponent implements OnInit {
       this.contactData.email.length > 0 &&
       !this.isEmailValid(this.contactData.email)
     ) {
-      this.contactData.email = ''; // Setze das E-Mail-Feld zurück
+      this.contactData.email = ''; 
     }
   }
 
   checkEmailValidity() {
     if (!this.isEmailValid(this.contactData.email)) {
-      this.contactData.email = ''; // Setze das E-Mail-Feld zurück, wenn es ungültig ist
+      this.contactData.email = ''; 
     }
   }
 
@@ -196,20 +196,19 @@ export class ContactComponent implements OnInit {
 
 
   scrollToInput(inputId: string) {
-    const inputElement = document.getElementById(inputId);  // Namensfeld
+    const inputElement = document.getElementById(inputId);  
   
     if (inputElement) {
-      inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });  // Scrollt exakt zum Namensfeld
+      inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });  
   
       setTimeout(() => {
-        inputElement.focus();  // Setzt den Fokus
-        inputElement.classList.add('highlight');  // Fügt die Highlight-Klasse hinzu
-  
-        // Entfernt die Klasse nach einer Zeit (z.B. 2 Sekunden)
+        inputElement.focus();  
+        inputElement.classList.add('highlight'); 
+        
         setTimeout(() => {
           inputElement.classList.remove('highlight');
         }, 2000);
-      }, 500); // Fokus und Highlight setzen, nachdem das Scrollen abgeschlossen ist
+      }, 500); 
     }
   }
   
