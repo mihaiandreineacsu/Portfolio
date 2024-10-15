@@ -1,15 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss',
+  styleUrls: ['./footer.component.scss'], 
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit {
   links: Array<{ text: string; link: string; target: string }> = [
     {
       text: 'Github',
@@ -25,26 +25,34 @@ export class FooterComponent {
     { text: 'Impressum', link: '#', target: '' },
   ];
 
+  hideEmailAndImpressumButtons: boolean = false;
+
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.router.events.subscribe(() => {
+      this.checkCurrentRoute();
+    });
+  }
+
+  checkCurrentRoute() {
+    const currentUrl = this.router.url;
+    this.hideEmailAndImpressumButtons = currentUrl.includes('/impressum');
+  }
+
   scrollToInput(name: string) {
-    const inputElement = document.getElementById(name); 
-
+    const inputElement = document.getElementById(name);
     if (inputElement) {
-      
       inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    
+      
       setTimeout(() => {
-        inputElement.focus(); 
+        inputElement.focus();
         inputElement.classList.add('highlight');
 
-       
         setTimeout(() => {
           inputElement.classList.remove('highlight');
         }, 2000);
-      }, 500); 
+      }, 500);
     }
   }
-
-  
-  
 }

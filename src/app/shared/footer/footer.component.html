@@ -14,25 +14,25 @@
       <div class="link-right" *ngFor="let link of links">
         <div class="dot"></div>
         <ng-container *ngIf="link.link !== '#'">
-          <!-- Externe Links (GitHub, LinkedIn) -->
+          <!-- Externe Links (GitHub, LinkedIn) - immer sichtbar -->
           <a
-            *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'"
+            *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com' && link.link !== '#'"
             [href]="link.link"
             [attr.target]="link.target"
             >{{ link.text }}</a
           >
 
-          <!-- E-Mail-Link für das Kontaktformular -->
+          <!-- E-Mail-Link für das Kontaktformular - nur wenn nicht auf Impressum-Seite -->
           <a
-            *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'"
+            *ngIf="link.link === 'mailto:info@ogulcan-erdag.com' && !hideEmailAndImpressumButtons"
             (click)="scrollToInput('name')"
             style="cursor: pointer"
             >{{ link.text }}</a
           >
         </ng-container>
 
-        <!-- Impressum-Link -->
-        <a *ngIf="link.link === '#'" [routerLink]="'/impressum'">{{
+        <!-- Impressum-Link - nur wenn nicht auf Impressum-Seite -->
+        <a *ngIf="link.link === '#' && !hideEmailAndImpressumButtons" [routerLink]="'/impressum'">{{
           link.text
         }}</a>
       </div>
@@ -51,22 +51,22 @@
           <div class="dot"></div>
           <ng-container *ngIf="link.link !== '#'">
             <a
-              *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com'"
+              *ngIf="link.link !== 'mailto:info@ogulcan-erdag.com' && link.link !== '#'"
               [href]="link.link"
               [attr.target]="link.target"
               >{{ link.text }}</a
             >
 
             <a
-              *ngIf="link.link === 'mailto:info@ogulcan-erdag.com'"
+              *ngIf="link.link === 'mailto:info@ogulcan-erdag.com' && !hideEmailAndImpressumButtons"
               (click)="scrollToInput('name')"
               style="cursor: pointer"
               >{{ link.text }}</a
             >
           </ng-container>
 
-          <!-- Impressum-Link -->
-          <a *ngIf="link.link === '#'" [routerLink]="'/impressum'">{{
+          <!-- Impressum-Link - nur wenn nicht auf Impressum-Seite -->
+          <a *ngIf="link.link === '#' && !hideEmailAndImpressumButtons" [routerLink]="'/impressum'">{{
             link.text
           }}</a>
         </div>

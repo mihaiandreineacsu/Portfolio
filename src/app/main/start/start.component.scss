@@ -89,7 +89,7 @@
 }
 
 .lines-content {
-  width: 1920px;
+  width: 1440px;
   @include margin-sides($le: 96px, $ri: 96px);
   @include dFlex($fd: row, $jc: space-between, $ai: flex-end);
 }

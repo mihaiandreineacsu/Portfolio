@@ -12,7 +12,7 @@
 .quotes-content {
     @include dFlex($fd: column, $jc:flex-start, $ai: center);
     gap: 20px;
-    width: 1350px;
+    width: 1440px;
     @include margin-sides($le: 96px, $ri: 96px);
     > h2 {
         color: $standard-green;

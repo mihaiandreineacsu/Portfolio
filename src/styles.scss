@@ -13,31 +13,39 @@ body {
     font-weight: 400;
     overflow-x: hidden;
     /* Für Webkit-basierte Browser (Chrome, Safari, Edge) */
-::-webkit-scrollbar {
-  width: 0px; /* Sehr schmale Scrollbar */
-  height: 0px; /* Für horizontale Scrollbars */
+
 }
 
-::-webkit-scrollbar-track {
-  background: transparentize($color: #000000, $amount: 0); /* Hintergrund der Scrollbar (unsichtbar) */
+::-webkit-scrollbar {
+  width: 10px; /* Sehr schmale Scrollbar */
+  height: 10px; /* Für horizontale Scrollbars */
+  background-color: #1C1C1C;
+  
 }
+
 
 ::-webkit-scrollbar-thumb {
-  background-color: black; /* Schwarze Scrollbar */
-  border-radius: 10px; /* Runde Ecken */
-  border: 1px solid rgba(61, 207, 182, 1); /* Rahmen in der gewünschten Farbe */
+  background-color: #3DCFB6; /* Schwarze Scrollbar */
+   /* Runde Ecken */
+   /* Rahmen in der gewünschten Farbe */
+
+   &:hover {
+    cursor: pointer; 
+   }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: black; /* Beim Hover bleibt die Farbe schwarz */
-}
+
+
+
+
+
 
 /* Für Firefox */
 // * {
 //   scrollbar-color: black rgba(61, 207, 182, 0.1); /* Thumb: Schwarz, Track: leicht transparent */
 //   scrollbar-width: thin; /* Sehr schmale Scrollbar */
 // }
-}
+
 
 p {
     margin-block-start: 0;

@@ -9,7 +9,7 @@
 }
 
 .skills-content {
-    width: 1350px;
+    width: 1440px;
     @include dFlex($fd: column, $jc:flex-start, $ai: flex-start);
     gap: 20px;
     @include margin-sides($le: 96px, $ri: 96px);
