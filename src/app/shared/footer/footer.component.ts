@@ -7,7 +7,7 @@ import { Router, RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss'], 
+  styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {
   links: Array<{ text: string; link: string; target: string }> = [
@@ -26,8 +26,9 @@ export class FooterComponent implements OnInit {
   ];
 
   hideEmailAndImpressumButtons: boolean = false;
+  currentUrl!: string;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.router.events.subscribe(() => {
@@ -36,23 +37,31 @@ export class FooterComponent implements OnInit {
   }
 
   checkCurrentRoute() {
-    const currentUrl = this.router.url;
-    this.hideEmailAndImpressumButtons = currentUrl.includes('/impressum');
+    this.currentUrl = this.router.url;
+    this.hideEmailAndImpressumButtons = this.currentUrl.includes('/impressum');
   }
 
   scrollToInput(name: string) {
-    const inputElement = document.getElementById(name);
-    if (inputElement) {
-      inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      
-      setTimeout(() => {
-        inputElement.focus();
-        inputElement.classList.add('highlight');
-
-        setTimeout(() => {
-          inputElement.classList.remove('highlight');
-        }, 2000);
-      }, 500);
+    if (this.router.url.includes('/privacy')) {
+      this.router.navigateByUrl('/').then((onfulfilled) => {
+        if (onfulfilled) {
+          setTimeout(() => this.scrollToInput(name), 100);
+        }
+      })
     }
+    const inputElement = document.getElementById(name);
+    if (!inputElement) return;
+
+    inputElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    setTimeout(() => {
+      inputElement.focus();
+      inputElement.classList.add('highlight');
+
+      setTimeout(() => {
+        inputElement.classList.remove('highlight');
+      }, 2000);
+    }, 500);
+
   }
 }
